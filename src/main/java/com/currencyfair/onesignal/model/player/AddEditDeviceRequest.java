@@ -27,7 +27,7 @@ import java.math.BigDecimal;
 public class AddEditDeviceRequest extends Device {
 
     /**
-     * REQUIRED Your OneSignal App Id found in Keys & IDs.
+     * REQUIRED Your OneSignal App Id found in Keys &amp; IDs.
      */
     @JsonProperty("app_id")
     private String appId;

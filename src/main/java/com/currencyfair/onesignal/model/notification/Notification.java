@@ -95,7 +95,7 @@ public class Notification {
     // The following are parameters in Create Notifications common to all methods of targeting users.
 
     /**
-     * REQUIRED Your OneSignal application ID, which can be found in Keys & IDs. It is a UUID and looks similar to
+     * REQUIRED Your OneSignal application ID, which can be found in Keys &amp; IDs. It is a UUID and looks similar to
      * {@code 8250eaf6-1a58-489e-b136-7c74a864b434}.
      */
     @JsonProperty("app_id")
@@ -487,7 +487,7 @@ public class Notification {
     /**
      * Schedule notification for future delivery.
      * <p>
-     * Examples: All examples are the exact same date & time.
+     * Examples: All examples are the exact same date &amp; time.
      * <p>
      * {@code "Thu Sep 24 2015 14:00:00 GMT-0700 (PDT)"}
      * <p>
@@ -622,7 +622,7 @@ public class Notification {
 
     /**
      * Indicates whether to send to all Google Chrome, Chrome on Android, and Mozilla Firefox users registered under
-     * your Chrome & Firefox web push platform.
+     * your Chrome &amp; Firefox web push platform.
      * <p>
      * WEB
      */
@@ -672,9 +672,9 @@ public class Notification {
 
     /**
      * THIS FLAG IS NOT USED FOR WEB PUSH Please see {@link #chromeWeb} for sending to web push users. This flag only
-     * applies to Google Chrome Apps & Extensions.
+     * applies to Google Chrome Apps &amp; Extensions.
      * <p>
-     * Indicates whether to send to all devices registered under your app's Google Chrome Apps & Extension platform.
+     * Indicates whether to send to all devices registered under your app's Google Chrome Apps &amp; Extension platform.
      * <p>
      * CHROMEAPP
      */

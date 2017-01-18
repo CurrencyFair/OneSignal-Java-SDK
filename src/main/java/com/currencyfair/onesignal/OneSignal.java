@@ -63,7 +63,7 @@ public final class OneSignal {
      * If a targeting parameter of one type is used, then targeting parameters from other types may not be used.
      * For instance, you cannot use the {@link NotificationRequest#includedSegments} parameter (from segments) with
      * the {@link NotificationRequest#filters}.
-     * @param appAuthKey OneSignal App Auth Key, available in Keys & IDs.
+     * @param appAuthKey OneSignal App Auth Key, available in Keys &amp; IDs.
      * @param notificationRequest the notification to create
      * @return the response
      */
@@ -73,7 +73,7 @@ public final class OneSignal {
 
     /**
      * Stop a scheduled or currently outgoing notification.
-     * @param appAuthKey OneSignal App Auth Key, available in Keys & IDs, unless the notification was created using
+     * @param appAuthKey OneSignal App Auth Key, available in Keys &amp; IDs, unless the notification was created using
      * {@link NotificationRequest#includePlayerIds} and targeting only one user.
      * @param appId OneSignal App ID
      * @param notificationId the notification ID to cancel
@@ -84,7 +84,7 @@ public final class OneSignal {
 
     /**
      * View the details of a single notification.
-     * @param appAuthKey OneSignal App Auth Key, available in Keys & IDs.
+     * @param appAuthKey OneSignal App Auth Key, available in Keys &amp; IDs.
      * @param appId OneSignal App ID
      * @param notificationId the notification ID to retrieve
      * @return the matching notifications or error response
@@ -95,7 +95,7 @@ public final class OneSignal {
 
     /**
      * View the details of multiple notifications.
-     * @param appAuthKey OneSignal App Auth Key, available in Keys & IDs.
+     * @param appAuthKey OneSignal App Auth Key, available in Keys &amp; IDs.
      * @param appId OneSignal App ID
      * @param limit max number of notifications to retrieve, if {@code null} defaults to {@code 50}
      * @param offset where to start, if {@code null} defaults to {@code 0}
@@ -116,7 +116,7 @@ public final class OneSignal {
 
     /**
      * View the details of all of your current OneSignal apps.
-     * @param userAuthKey OneSignal User Auth Key, available in Keys & IDs.
+     * @param userAuthKey OneSignal User Auth Key, available in Keys &amp; IDs.
      * @return list of all your apps
      */
     public static List<AppResponse> viewApps(String userAuthKey) {
@@ -125,7 +125,7 @@ public final class OneSignal {
 
     /**
      * View the details of a single OneSignal app.
-     * @param userAuthKey OneSignal User Auth Key, available in Keys & IDs.
+     * @param userAuthKey OneSignal User Auth Key, available in Keys &amp; IDs.
      * @param appId the app ID
      * @return the details of the app
      */
@@ -135,7 +135,7 @@ public final class OneSignal {
 
     /**
      * Creates a new OneSignal app.
-     * @param userAuthKey OneSignal User Auth Key, available in Keys & IDs.
+     * @param userAuthKey OneSignal User Auth Key, available in Keys &amp; IDs.
      * @param app the app details for creation
      * @return the created app
      */
@@ -150,7 +150,7 @@ public final class OneSignal {
      * <ul>
      * <li>To update only your app name, you can pass in only a new app name parameter.</li>
      * <li>To update Android, be sure to pass in {@link App#gcmKey}.</li>
-     * <li>To update Chrome Apps & Extensions, be sure to pass in {@link App#chromeKey}.</li>
+     * <li>To update Chrome Apps &amp; Extensions, be sure to pass in {@link App#chromeKey}.</li>
      * <li>To update Chrome web push, be sure to pass in {@link App#chromeWebOrigin}.</li>
      * <li>To update Safari web push, you must pass in all of these parameters: {@link App#safariApnsP12},
      * {@link App#safariApnsP12password}, {@link App#siteName}, and {@link App#safariSiteOrigin}. Most users use our
@@ -158,7 +158,7 @@ public final class OneSignal {
      * to {@code ""} and {@link App#safariApnsP12password} to {@code ""}.</li>
      * <li>To update iOS, you must pass in {@link App#apnsEnv} and {@link App#apnsP12}.</li>
      * </ul>
-     * @param userAuthKey OneSignal User Auth Key, available in Keys & IDs.</li>
+     * @param userAuthKey OneSignal User Auth Key, available in Keys &amp; IDs.
      * @param app the app details for update
      * @return the updated app
      */
@@ -169,11 +169,11 @@ public final class OneSignal {
     /**
      * View the details of multiple devices in one of your OneSignal apps.
      * <p>
-     * <b>Unavailable for Apps > 100,000 users</b>
+     * <b>Unavailable for Apps &gt; 100,000 users</b>
      * <p>
      * For performance reasons, this method is not available for larger apps. Larger apps should use the CSV export API
      * endpoint, which is much more performant.
-     * @param appAuthKey OneSignal App Auth Key, available in Keys & IDs.
+     * @param appAuthKey OneSignal App Auth Key, available in Keys &amp; IDs.
      * @param appId The app ID that you want to view devices from
      * @param limit How many devices to return. Max is 300. Default is 300
      * @param offset Result offset. Default is 0. Results are sorted by id
@@ -185,7 +185,7 @@ public final class OneSignal {
 
     /**
      * View the details of an existing device in one of your OneSignal apps
-     * @param appAuthKey OneSignal App Auth Key, available in Keys & IDs.
+     * @param appAuthKey OneSignal App Auth Key, available in Keys &amp; IDs.
      * @param appId Your app_id for this device
      * @param deviceId Player's OneSignal ID
      * @return details of the given device
@@ -284,7 +284,7 @@ public final class OneSignal {
      * The file will be compressed using GZip.
      * <p>
      * The file may take several minutes to generate depending on the number of users in your app.
-     * @param appAuthKey OneSignal App Auth Key, available in Keys & IDs.
+     * @param appAuthKey OneSignal App Auth Key, available in Keys &amp; IDs.
      * @param appId OneSignal App ID
      * @param csvExportFileLocationRequest the optional request object
      * @return object with the url to the CSV file
