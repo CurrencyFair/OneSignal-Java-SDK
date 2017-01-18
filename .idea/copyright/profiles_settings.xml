@@ -1,0 +1,10 @@
+<component name="CopyrightManager">
+  <settings default="copyright">
+    <module2copyright>
+      <element module="project" copyright="copyright" />
+    </module2copyright>
+    <LanguageOptions name="__TEMPLATE__">
+      <option name="addBlankAfter" value="false" />
+    </LanguageOptions>
+  </settings>
+</component>

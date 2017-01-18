@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  - CurrencyFair Checkstyle Configuration.
+-->
+<!DOCTYPE module PUBLIC
+        "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+        "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+
+<module name="Checker">
+
+    <module name="SuppressionFilter">
+        <property name="file" value="config/checkstyle-suppressions.xml"/>
+    </module>
+    <module name="SuppressionCommentFilter">
+        <property name="offCommentFormat" value="CHECKSTYLE:Off (\w+)"/>
+        <property name="onCommentFormat" value="CHECKSTYLE:On (\w+)"/>
+        <property name="checkFormat" value="$1"/>
+    </module>
+    <module name="SuppressWithNearbyCommentFilter">
+        <property name="commentFormat" value="CHECKSTYLE:Skip (\w+) (-?\d+)"/>
+        <property name="checkFormat" value="$1"/>
+        <property name="influenceFormat" value="$2"/>
+    </module>
+
+    <module name="NewlineAtEndOfFile">
+        <property name="severity" value="warning"/>
+    </module>
+    <module name="FileTabCharacter">
+        <property name="fileExtensions" value="java"/>
+    </module>
+    <module name="Translation"/>
+    <module name="FileLength"/>
+
+    <module name="TreeWalker">
+
+        <module name="FileContentsHolder"/>
+        <property name="cacheFile" value="config/checkstyle.cache"/>
+
+        <module name="JavadocMethod">
+            <property name="scope" value="protected"/>
+            <property name="allowUndeclaredRTE" value="true"/>
+            <property name="allowMissingPropertyJavadoc" value="true"/>
+            <property name="allowMissingJavadoc" value="true"/>
+            <property name="allowThrowsTagsForSubclasses" value="true"/>
+        </module>
+        <module name="JavadocType">
+            <property name="scope" value="protected"/>
+        </module>
+        <module name="JavadocVariable">
+            <property name="scope" value="public"/>
+        </module>
+        <module name="JavadocStyle">
+            <property name="checkHtml" value="false"/>
+            <property name="checkFirstSentence" value="false"/>
+        </module>
+        <module name="PackageAnnotation"/>
+        <module name="AnnotationUseStyle">
+            <property name="elementStyle" value="compact" />
+            <property name="trailingArrayComma" value="never" />
+            <property name="closingParens" value="ignore" />
+        </module>
+        <module name="MissingDeprecated"/>
+        <module name="EqualsAvoidNull"/>
+
+        <module name="ConstantName"/>
+        <module name="DeclarationOrder"/>
+        <module name="LocalFinalVariableName"/>
+        <module name="LocalVariableName"/>
+        <module name="MemberName"/>
+        <module name="MethodName"/>
+        <module name="PackageName"/>
+        <module name="ParameterName"/>
+        <module name="StaticVariableName"/>
+        <module name="TypeName"/>
+
+        <module name="AvoidStarImport"/>
+        <module name="AvoidStaticImport"/>
+        <module name="ImportControl">
+            <property name="file" value="config/importControl.xml"/>
+        </module>
+        <module name="RedundantImport"/>
+        <module name="UnusedImports"/>
+        <module name="ImportOrder">
+            <property name="groups" value="*,/^javax?\./"/>
+            <property name="ordered" value="true"/>
+            <property name="option" value="top"/>
+            <property name="separated" value="true"/>
+        </module>
+
+        <module name="MethodLength"/>
+        <module name="ParameterNumber"/>
+
+        <module name="EmptyForIteratorPad"/>
+        <module name="MethodParamPad"/>
+        <module name="NoWhitespaceAfter"/>
+        <module name="NoWhitespaceBefore"/>
+        <module name="OperatorWrap"/>
+        <module name="ParenPad"/>
+        <module name="TypecastParenPad"/>
+        <module name="WhitespaceAfter"/>
+        <module name="WhitespaceAround">
+            <property name="tokens" value="ASSIGN, BAND, BAND_ASSIGN, BOR, BOR_ASSIGN, BSR, BSR_ASSIGN, BXOR, BXOR_ASSIGN, COLON, DIV, DIV_ASSIGN, EQUAL, GE, GT, LAND, LCURLY, LE, LITERAL_ASSERT, LITERAL_CATCH, LITERAL_DO, LITERAL_ELSE, LITERAL_FINALLY, LITERAL_FOR, LITERAL_IF, LITERAL_RETURN, LITERAL_SYNCHRONIZED, LITERAL_TRY, LITERAL_WHILE, LOR, LT, MINUS, MINUS_ASSIGN, MOD, MOD_ASSIGN, NOT_EQUAL, PLUS, PLUS_ASSIGN, QUESTION, SL, SLIST, SL_ASSIGN, SR, SR_ASSIGN, STAR, STAR_ASSIGN"/>
+        </module>
+        <module name="GenericWhitespace"/>
+
+        <module name="ModifierOrder"/>
+        <module name="RedundantModifier"/>
+
+        <module name="AvoidNestedBlocks"/>
+        <module name="EmptyBlock"/>
+        <module name="LeftCurly"/>
+        <module name="NeedBraces"/>
+        <module name="RightCurly"/>
+
+        <module name="EmptyStatement"/>
+        <module name="EqualsHashCode"/>
+        <module name="InnerAssignment"/>
+        <module name="MissingSwitchDefault"/>
+        <module name="SimplifyBooleanExpression"/>
+        <module name="SimplifyBooleanReturn"/>
+
+        <module name="FinalClass"/>
+        <module name="HideUtilityClassConstructor"/>
+        <module name="InterfaceIsType"/>
+        <module name="VisibilityModifier">
+            <property name="protectedAllowed" value="true"/>
+        </module>
+
+
+        <module name="ArrayTypeStyle"/>
+        <module name="TodoComment"/>
+        <module name="UpperEll"/>
+
+        <module name="BooleanExpressionComplexity"/>
+        <module name="ClassFanOutComplexity">
+            <property name="max" value="24"/>
+            <property name="excludedClasses" value="boolean, byte, char, double, float, int, long, short, void, Boolean,
+             Byte, Character, Double, Float, Integer, Long, Short, Void, Object, Class, String, StringBuffer,
+             StringBuilder, ArrayIndexOutOfBoundsException, Exception, RuntimeException, IllegalArgumentException,
+             IllegalStateException, IndexOutOfBoundsException, NullPointerException, Throwable, SecurityException,
+             UnsupportedOperationException, List, ArrayList, Deque, Queue, LinkedList, Set, HashSet, SortedSet,
+             TreeSet, Map, HashMap, SortedMap, TreeMap, java.util.Date, Calendar, Entry, Collection, Iterable,
+             EnumMap, EnumSet, LinkedHashMap, LinkedHashSet, Enum, Number, Throwable, Void, Comparable,
+             CFRuntimeException, BigDecimal, BigInteger"/>
+        </module>
+        <module name="ClassDataAbstractionCoupling">
+            <property name="max" value="10"/>
+            <property name="excludedClasses" value="boolean, byte, char, double, float, int, long, short, void, Boolean,
+            Byte, Character, Double, Float, Integer, Long, Short, Void, Object, Class, String, StringBuffer, StringBuilder,
+            ArrayIndexOutOfBoundsException, Exception, RuntimeException, IllegalArgumentException, IllegalStateException,
+            IndexOutOfBoundsException, NullPointerException, Throwable, SecurityException, UnsupportedOperationException,
+            List, ArrayList, Deque, Queue, LinkedList, Set, HashSet, SortedSet, TreeSet, Map, HashMap, SortedMap, TreeMap,
+            DetailsAST, CheckstyleException, UnsupportedEncodingException, BuildException, ConversionException,
+            FileNotFoundException, BigDecimal, CFRuntimeException, EnumMap, EnumSet, LinkedHashMap, LinkedHashSet"/>
+        </module>
+        <module name="CyclomaticComplexity"/>
+        <module name="NPathComplexity"/>
+    </module>
+
+</module>

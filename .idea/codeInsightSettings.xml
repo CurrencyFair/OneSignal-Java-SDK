@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaProjectCodeInsightSettings">
+    <excluded-names>
+      <name>com.sun.javafx</name>
+      <name>com.sun.xml.internal</name>
+      <name>java.awt</name>
+      <name>javax.transaction.Transactional</name>
+    </excluded-names>
+  </component>
+</project>

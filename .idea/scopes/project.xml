@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="project" pattern="file[onesignal]:src/main/java//*||file[onesignal]:src/test/java//*" />
+</component>

@@ -1,0 +1,30 @@
+*.class
+*.swp
+*.iml
+*.DS_Store
+rebel.xml
+.gradle
+
+# Package Files
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+*.war
+*.ear
+
+# IDEs
+.classpath
+.project
+.checkstyle
+.idea/*
+!.idea/checkstyle-idea.xml
+!.idea/codeInsightSettings.xml
+!.idea/codeStyleSettings.xml
+!.idea/copyright
+!.idea/scopes
+!.idea/inspectionProfiles
+.settings/
+
+# Build
+target
+out
+build

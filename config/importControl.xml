@@ -1,0 +1,21 @@
+<!DOCTYPE import-control PUBLIC
+        "-//Puppy Crawl//DTD Import Control 1.1//EN"
+        "http://www.puppycrawl.com/dtds/import_control_1_1.dtd">
+
+<import-control pkg="com.currencyfair">
+    <allow pkg=".*" regex="true"/>
+    <disallow pkg="ch.qos.logback"/>
+    <disallow pkg="sun"/>
+    <disallow pkg="java.util.logging"/>
+    <disallow pkg="org.apache.log4j"/>
+    <disallow class="java.text.SimpleDateFormat"/>
+    <disallow class="javax.transaction.Transactional" />
+
+    <subpackage name="config">
+        <allow pkg="ch.qos.logback"/>
+    </subpackage>
+
+    <subpackage name="logging">
+        <allow pkg="ch.qos.logback"/>
+    </subpackage>
+</import-control>
