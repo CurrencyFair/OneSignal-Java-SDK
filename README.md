@@ -1,6 +1,6 @@
 # OneSignal-Java-SDK: Simple OneSignal Java REST client
 
-[![Build Status](https://travis-ci.com/CurrencyFair/OneSignal-Java-SDK.svg?token=5NAhngxk5qpm2qmLg8uz&branch=master)](https://travis-ci.com/CurrencyFair/OneSignal-Java-SDK)
+[![Build Status](https://travis-ci.org/CurrencyFair/OneSignal-Java-SDK.svg?branch=master)](https://travis-ci.org/CurrencyFair/OneSignal-Java-SDK)
 
 [OneSignal](https://onesignal.com/) provides Push Notification delivery and automation. This SDK is its unofficial Java REST client library.
 
