@@ -1,19 +1,37 @@
 sudo: false
 
-language: java
-
-jdk:
-  - oraclejdk8
 cache:
   directories:
     - ~/.m2/repository
 
-install: mvn install -P !build-extras -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-script: mvn test -P !build-extras -B
+language: java
+jdk:
+  - oraclejdk8
 
-after_success:
-  - ./cd/before-deploy.sh
-  - ./cd/deploy.sh
+install:
+  - mvn --settings .travis/mvnsettings.xml install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
+
+before_install:
+  - if [ ! -z "$GPG_SECRET_KEYS" ]; then echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import; fi
+  - if [ ! -z "$GPG_OWNERTRUST" ]; then echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust; fi
+
+deploy:
+  -
+    provider: script
+    script: .travis/deploy.sh
+    skip_cleanup: true
+    on:
+      repo: CurrencyFair/OneSignal-Java-SDK
+      branch: master
+      jdk: oraclejdk8
+  -
+    provider: script
+    script: .travis/deploy.sh
+    skip_cleanup: true
+    on:
+      repo: CurrencyFair/OneSignal-Java-SDK
+      tags: true
+      jdk: oraclejdk8
 
 notifications:
   slack:
@@ -25,14 +43,3 @@ notifications:
       - tech@currencyfair.com
     on_success: change
     on_failure: always
-
-env:
-  global:
-  # Ex. travis encrypt SONATYPE_USER=your_sonatype_username
-  - secure: "UdFsmrAHMJzTND6P7omOByXDmW+qRATl1Kr6oXXrPfdekMtpLgZZpk65gYTF7tpL2ITKc/Kz6WEU0kAkFGAlhaQQCPyjW8TdzxUCs5TtidlbA5cG/Fofn0K3zP5/j7s4QLCLcX8pqv4OG0EDxQbKHH/yTaWLxgHF+ffPwqAhDJXyFYxujqoMjg5XnRIrwmJxzUSyYehWYeAEBCUBnCq3HBX1J7lCR+laD6KI5oXoEHU2XMYWZHcNeduGm2jG2fueI2otP1Qyn1mmEUjnzNeWax8SNOQtRzMWnIZ3enqcUfBpNp/CudaU3tzTP0Xxp+eYMLp/EbgW+7R2KpIjF43g11fwhG9pCLZedJUkL4u2EhVsc80vs5InPFPFk7B4xuD5VQVj9HYKVFqV9F9lx6uEMe3/XOatsGbO4nXp7iCjOGdwo8GYfTRkoa9ICtWfxmPGl4IYCvyG8czZTFFpYAxAG0CMpOrj6MBesW2Xm8cK4/zewuU+YM/T3pLi7im7x58I76fKpt2lQ0doSZK6NXr5MUntHJOanVOT+k3TKZoFySHefsV/zVVE2Mao6P8ui/PC7oJJLdhSGQkT/g97dP6HWyF1SiSJiP2LIhN8Aw+7YfGo+M/RAC8tQwWDLwZVplVrCTiYKDaPMFt38nbwzESXgYYtwm1sH//bE2gNe11fZrA="
-  # Ex. travis encrypt SONATYPE_PASSWORD=your_sonatype_password
-  - secure: "inMzoLUpg5igKAE06WC31NLDBomI7SguPJmYKaH1DRaz7fwIcqOESVUOcG/MSBhHFvPFD6P+mtWwQrbbLUNFBR6zPxh7N0y/pBMhavUqxLaomwrPWeDYubOP7mRv/HdVKjU5R4bl2Bt2UoEkLI2GwgBxGbWjN+KHzWwmSM4X/fmxdSPiulIYRGSXNzKbdBgWZeQCIgjGrnyuNlWevpDKuoD4OIYobeNkrTAUCzK8K7B7TfVXsiQ76htvHNNr16+G4qnm4TTWrdnD1CxsEICmMuJ1vBuyp1KaTUCqbNaOhwZO3VMU9R+1mq3PBTt9OwbG/VrOcrYtDGdt7AooH73Xm/pVolJrgpv3Ux2dE5S9i+HITJws2hy7o7+EZDTnLLxLpsOUzKx+NTDLugZpiTfTqPtjjJIjLyoEnciQoSmgnE9UiPXEng4O2jN12wTZw2qYvSGeUxbSis2EvBEyYs3ohzPd9Zjo69DvgFyTcR5D4C0QLO4GnNtqoHySn39UPkOioetuuYJjdFw7uy0OvacMOINveqGzmiYAD5SGPwbP3Icu8HlykH4eGtBmre2Ey2YODyDjbR1fErPS5ihRRNpxpAtlz4g8EWZ4lQicBbrVAWfZXJWX1b0z7KQFd1DkERBH71oztP9ak6zrMemRHW97tt0t30Et9HWoo9BmQ/sIP7M="
-  # Ex. travis encrypt GPG_KEY_NAME=your_gpg_email
-  - secure: "ZeEPrlvihxicTWU+4FojgjBh4wjuqxiyMJ0t4nO2zcNywRZdKcCX1cARzBXvCmQ2opWUKuc3dk5yTs3XuxNKlCEmHFz3YAyKtam6wpmyjWI+2ZqkDxb1ulpJ5zyBTIT5YAeShfz6XJEwKjO309hZw9Kxm8u73PSasavFkj9/50w7RF6bs6w6dIFhVBi74Rdx3wGfW11y/Y39KnRl45/F8rsYQbExn2Idi+OmMvajRpV6HLvXCeKGSevOnsiqAcr4NlUdZhwqFN7QAxhv3Hf64zbawcVQ2Gjuk3r7ByiihG3I/7DB+e8jXI3UND+LUzUwcMUOytXyj2gk4fTex9k/7ysrdNdAE7/MnSXsIFR3+b3kgbzZwCqLQiFFSf+glk0sembcaPJW44AP4BLxbcnoqpN9lGJmnf9xPM2Mmu2RQ83eg0BEcCWEGm6BCK+bCnBAD1JaP7XOkKdoXGBPwHF2a9rEtpdhhYL2D+2bqVyor+rBDLqkwUhiTEiQShMPrQgg5w1EPiU9iNSlZIx3Qidmr5arBvP2LhFfxoJZMv80vhbej0uRR56aByW2mAJLAF0kZsz8MFWgyoN3wUH1YnvgEIlG/nG8NnQ+VZ67jY3u5J19Mv3dzjaYHPMo+VA/uczXAJYnzRaV5UTVTBuhmah8NO+CRyL3nfURMsPErLps1Nw="
-  # Ex. travis encrypt GPG_PASSPHRASE=your_gpg_password
-  - secure: "wR3RAAIWiU2A+IzQu58mteMmYDZYlBbIxFmDCtPNc4MJkMUKm7/YT0/qJSo+FChd1AjB7U3e7R7XeWJeituDaDU+gHppIy2TZmhOtzgPMMTnZOKp7AaLTn5LkilzarLhtbiEFkX/t4FG4pABssDJu2E+vk5UhklXwdOFIDZTSE18rVY9gWdob8K9U9A/sS8fPCi66lS/hukmLUTN7gPLxCBWEDg/u+O/Ae79Fh5O5KKNC4XevHPrUKXr1Y/FTQ2BE/myau22Q1w5kYsymsiQVoHDgiBSLvp3R6UqyIBBOEfnKV5YwqGl8BP7wu1mwn/P2kAhMhqMCS/zFLA/5YUwJjymA9pLvqnAIP0EyViFz5eAG21su85NV8B0V3o30aRsht+mF+/9gxpQ2jDcEi0JsFJWzWW+W5NEIcyV6tl8bOlhCKUCcNfolOX+VD3N0PcbiKtN2RSkwapqIAMTTjU9DicQJHe/ULXSq5MTJnUfR+gJiquUhVBUk1ewT0aqwleoOY7LWh6BlksD2tiRzzgUsFSSiN1REXCqS8MprKfKzMuTXn403ZS/CQwKQpcSrYEuBmZMWhlhb8xpUWp0N5PgkTE5dqcTw0YIjpz/DXAN11yoDKVj9RV4ec944yeSY74vLXLTi0ZCeZccdgVLXvvz6jBydf80EXBP499/p05mxws="
