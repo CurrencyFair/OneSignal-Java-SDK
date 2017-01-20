@@ -57,5 +57,5 @@ then
     git fetch upstream
     git add pom.xml
     git commit -m "[Travis-CI] next snapshot version"
-    git push upstream master
+    git push --quiet upstream master > /dev/null 2>&1
 fi
