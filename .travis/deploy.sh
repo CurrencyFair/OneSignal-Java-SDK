@@ -49,17 +49,14 @@ if [ ! -z "$TRAVIS_TAG" ]
 then
     increment_version_to_next_snapshot $TRAVIS_TAG
     echo "on a tag -> set pom.xml <version> to next SNAPSHOT $new_snapshot"
+    git checkout master
     mvn --settings .travis/mvnsettings.xml org.codehaus.mojo:versions-maven-plugin:2.3:set -DnewVersion=$new_snapshot
     mvn --settings .travis/mvnsettings.xml org.codehaus.mojo:versions-maven-plugin:2.3:commit
     # Save some useful information
     REPO=`git config remote.origin.url`
     SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
-    git clone $REPO out
-    # Clean out existing contents
-    cd out
     git config user.name "Travis CI"
     git config user.email "build@travis-ci.org"
-    yes | cp -f ../pom.xml pom.xml
     git add pom.xml
     git commit -m "[Travis-CI] next snapshot version"
 
@@ -70,5 +67,5 @@ then
     ssh-add .travis/deploy_key
 
     # Now that we're all set up, we can push.
-    git push $SSH_REPO $TARGET_BRANCH
+    git push $SSH_REPO master
 fi
