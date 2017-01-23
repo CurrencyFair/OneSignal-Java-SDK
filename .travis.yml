@@ -29,6 +29,9 @@ deploy:
       tags: true
       jdk: oraclejdk8
 
+after_deploy:
+  - .travis/after_deploy.sh
+
 notifications:
   slack:
     rooms:
