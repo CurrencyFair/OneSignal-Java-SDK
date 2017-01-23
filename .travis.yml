@@ -40,7 +40,3 @@ notifications:
       - tech@currencyfair.com
     on_success: change
     on_failure: always
-
-env:
-  global:
-  - ENCRYPTION_LABEL: "7a1322f4b03c"
