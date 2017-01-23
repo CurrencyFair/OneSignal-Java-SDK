@@ -29,4 +29,4 @@ target
 out
 build
 
-.travis/deploy_rsa
+.travis/deploy_key

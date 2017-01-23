@@ -43,3 +43,8 @@ notifications:
       - tech@currencyfair.com
     on_success: change
     on_failure: always
+
+env:
+  global:
+    - GIT_NAME="Mateusz Bajorek"
+    - GIT_EMAIL="mateusz.bajorek@gmail.com"
