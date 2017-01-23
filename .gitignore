@@ -28,5 +28,3 @@ rebel.xml
 target
 out
 build
-
-.travis/deploy_key

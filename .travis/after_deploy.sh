@@ -22,10 +22,14 @@ increment_version_to_next_snapshot ()
 if [ ! -z "$TRAVIS_TAG" ]
 then
     # Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
-    openssl aes-256-cbc -K $encrypted_541ac7960f0d_key -iv $encrypted_541ac7960f0d_iv -in .travis/deploy_key.enc -out .travis/deploy_key -d
-    chmod 600 .travis/deploy_key
+    openssl aes-256-cbc \
+        -K $encrypted_dd04a63e1379_key \
+        -iv $encrypted_dd04a63e1379_iv \
+        -in .travis/github_deploy_key.enc \
+        -out .travis/github_deploy_key -d
+    chmod 600 .travis/github_deploy_key
     eval `ssh-agent -s`
-    ssh-add .travis/deploy_key
+    ssh-add .travis/github_deploy_key
     git config --global user.name "$GIT_NAME"
     git config --global user.email "$GIT_EMAIL"
 
