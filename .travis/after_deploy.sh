@@ -29,19 +29,17 @@ then
     mvn --settings .travis/mvnsettings.xml org.codehaus.mojo:versions-maven-plugin:2.3:set -DnewVersion=$new_snapshot
     mvn --settings .travis/mvnsettings.xml org.codehaus.mojo:versions-maven-plugin:2.3:commit
     # Save some useful information
-    REPO=`git config remote.origin.url`
-    SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
     git config user.name "Travis CI"
     git config user.email "build@travis-ci.org"
     git add pom.xml
-    git commit -m "[Travis-CI] next snapshot version"
+    git commit -m "[skip ci] [Travis-CI] next snapshot version via Travis build $TRAVIS_BUILD_NUMBER"
 
-    # Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
-    openssl aes-256-cbc -K $encrypted_7a1322f4b03c_key -iv $encrypted_7a1322f4b03c_iv -in .travis/deploy_key.enc -out .travis/deploy_key -d
-    chmod 600 .travis/deploy_key
+    # Get the deploy key by using Travis's stored variables to decrypt deploy_rsa.enc
+    openssl aes-256-cbc -K $encrypted_7a1322f4b03c_key -iv $encrypted_7a1322f4b03c_iv -in .travis/deploy_rsa.enc -out .travis/deploy_rsa -d
+    chmod 600 .travis/deploy_rsa
     eval `ssh-agent -s`
-    ssh-add .travis/deploy_key
+    ssh-add .travis/deploy_rsa
 
     # Now that we're all set up, we can push.
-    git push $SSH_REPO master
+    git push upstream master
 fi
