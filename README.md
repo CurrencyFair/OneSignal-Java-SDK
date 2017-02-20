@@ -1,7 +1,8 @@
 # OneSignal-Java-SDK: Simple OneSignal Java REST client
 
-* Build status [![Build Status](https://travis-ci.org/CurrencyFair/OneSignal-Java-SDK.svg?branch=master)](https://travis-ci.org/CurrencyFair/OneSignal-Java-SDK)
-* Latest release [![GitHub version](https://badge.fury.io/gh/CurrencyFair%2FOneSignal-Java-SDK.svg)](https://badge.fury.io/gh/CurrencyFair%2FOneSignal-Java-SDK)
+* Build status [![Travis](https://img.shields.io/travis/CurrencyFair/OneSignal-Java-SDK.svg)](https://travis-ci.org/CurrencyFair/OneSignal-Java-SDK)
+* Latest release [![Maven Central](https://img.shields.io/maven-central/v/com.currencyfair/onesignal.svg)](https://search.maven.org/#search%7Cga%7C1%7Ccom.currencyfair.onesignal)
+* License [![License](https://img.shields.io/github/license/CurrencyFair/OneSignal-Java-SDK.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 [OneSignal](https://onesignal.com/) provides Push Notification delivery and automation. This SDK is its unofficial Java REST client library.
 
@@ -23,7 +24,7 @@ $ mvn install
 ## Binaries
 Binaries and dependency information for Maven, Ivy, Gradle and others can be found at [http://search.maven.org](http://search.maven.org/#search%7Cga%7C1%7Ccom.currencyfair.onesignal).
 
-Replace `x.y.z` with [![GitHub version](https://badge.fury.io/gh/CurrencyFair%2FOneSignal-Java-SDK.svg)](https://badge.fury.io/gh/CurrencyFair%2FOneSignal-Java-SDK) or current SNAPSHOT version.
+Replace `x.y.z` with [![Maven Central](https://img.shields.io/maven-central/v/com.currencyfair/onesignal.svg)](https://search.maven.org/#search%7Cga%7C1%7Ccom.currencyfair.onesignal) or current SNAPSHOT version.
 
 Example for Gradle:
 ```groovy
