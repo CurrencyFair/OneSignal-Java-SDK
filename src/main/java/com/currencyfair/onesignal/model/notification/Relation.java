@@ -24,9 +24,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public enum Relation {
 
     //CHECKSTYLE:Off Javadoc
-    LESS_THAN(">"),
-    GREATER_THAN("<"),
-    EQUALS("+"),
+    LESS_THAN("<"),
+    GREATER_THAN(">"),
+    EQUALS("="),
     NOT_EQUALS("!="),
     EXISTS("exists"),
     NOT_EXISTS("not_exists");
