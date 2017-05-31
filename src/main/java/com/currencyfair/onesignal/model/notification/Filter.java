@@ -57,11 +57,14 @@ public class Filter {
      */
     private Operator operator;
 
-    public Filter(Field field, String key, Relation relation, String value, Operator operator) {
+    public Filter(Field field, String key, Relation relation, String value) {
         this.field = field;
         this.key = key;
         this.relation = relation;
         this.value = value;
+    }
+
+    public Filter(Operator operator) {
         this.operator = operator;
     }
 
