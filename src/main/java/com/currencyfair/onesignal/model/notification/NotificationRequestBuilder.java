@@ -153,6 +153,11 @@ public final class NotificationRequestBuilder {
         return this;
     }
 
+    public NotificationRequestBuilder withFilterOperator(Operator operator) {
+        filters.add(new Filter(operator));
+        return this;
+    }
+
     public NotificationRequestBuilder withIncludePlayerIds(List<String> includePlayerIds) {
         this.includePlayerIds = includePlayerIds;
         return this;
