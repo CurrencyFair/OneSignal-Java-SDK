@@ -10,8 +10,6 @@ cat >gen-key-script <<EOF
     %echo Generating a basic OpenPGP key
     Key-Type: RSA
     Key-Length: 4096
-    Subkey-Type: 1
-    Subkey-Length: 4096
     Name-Real: CurrencyFair
     Name-Email: tech@currencyfair.com
     Expire-Date: 0y
