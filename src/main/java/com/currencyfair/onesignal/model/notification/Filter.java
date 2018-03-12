@@ -30,6 +30,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  * The filters parameter targets notification recipients using an array of JSON objects containing field conditions
  * to check.
  */
+
 public class Filter {
 
     /**
@@ -51,9 +52,17 @@ public class Filter {
      * Value.
      */
     private String value;
-
+    /**
+     * for location filter
+     */
     private String radius;
+    /**
+     * for location filter
+     */
     private String latitude;
+    /**
+     * for location filter
+     */
     private String longitude;
 
     /**
