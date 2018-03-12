@@ -77,17 +77,6 @@ public class Filter {
         this.value = value;
     }
 
-    public Filter(Field field, String key, Relation relation, String value, String radius, String latitude, String longitude, Operator operator) {
-        this.field = field;
-        this.key = key;
-        this.relation = relation;
-        this.value = value;
-        this.radius = radius;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.operator = operator;
-    }
-
     public Filter(Operator operator) {
         this.operator = operator;
     }
