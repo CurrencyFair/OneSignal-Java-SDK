@@ -52,6 +52,10 @@ public class Filter {
      */
     private String value;
 
+    private String radius;
+    private String latitude;
+    private String longitude;
+
     /**
      * Operator. Defaults to {@link Operator#AND}.
      */
@@ -62,6 +66,17 @@ public class Filter {
         this.key = key;
         this.relation = relation;
         this.value = value;
+    }
+
+    public Filter(Field field, String key, Relation relation, String value, String radius, String latitude, String longitude, Operator operator) {
+        this.field = field;
+        this.key = key;
+        this.relation = relation;
+        this.value = value;
+        this.radius = radius;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.operator = operator;
     }
 
     public Filter(Operator operator) {
@@ -109,6 +124,30 @@ public class Filter {
 
     public void setOperator(Operator operator) {
         this.operator = operator;
+    }
+
+    public String getRadius() {
+        return radius;
+    }
+
+    public void setRadius(String radius) {
+        this.radius = radius;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     @Override
