@@ -30,6 +30,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  * The filters parameter targets notification recipients using an array of JSON objects containing field conditions
  * to check.
  */
+
 public class Filter {
 
     /**
@@ -51,6 +52,18 @@ public class Filter {
      * Value.
      */
     private String value;
+    /**
+     * for location filter
+     */
+    private String radius;
+    /**
+     * for location filter
+     */
+    private String latitude;
+    /**
+     * for location filter
+     */
+    private String longitude;
 
     /**
      * Operator. Defaults to {@link Operator#AND}.
@@ -109,6 +122,30 @@ public class Filter {
 
     public void setOperator(Operator operator) {
         this.operator = operator;
+    }
+
+    public String getRadius() {
+        return radius;
+    }
+
+    public void setRadius(String radius) {
+        this.radius = radius;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     @Override
