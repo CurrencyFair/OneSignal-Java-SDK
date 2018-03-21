@@ -69,6 +69,7 @@
         <feign.version>9.4.0</feign.version>
         <commons.lang3.version>3.5</commons.lang3.version>
         <commons.io.version>2.5</commons.io.version>
+        <junit.version>4.12</junit.version>
 
         <!--CHECKSTYLE-->
         <checkstyle.configuration>config/cf_checkstyle.xml</checkstyle.configuration>
@@ -231,6 +232,7 @@
     </dependencyManagement>
 
     <dependencies>
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -275,6 +277,14 @@
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-slf4j</artifactId>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
