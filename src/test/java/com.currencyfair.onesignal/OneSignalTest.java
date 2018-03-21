@@ -70,6 +70,7 @@ public class OneSignalTest {
 
     /*    Assert.assertTrue(response.getId() != null);
         Assert.assertEquals(null,response.getErrors());*/
+        Assert.assertTrue(response.getId() != null);
         System.out.println("CreateNotificationResponse: " + response);
     }
 }
