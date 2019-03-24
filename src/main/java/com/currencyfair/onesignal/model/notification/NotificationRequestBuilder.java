@@ -15,6 +15,7 @@
  */
 package com.currencyfair.onesignal.model.notification;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public final class NotificationRequestBuilder {
     private String templateId;
     private Boolean contentAvailable;
     private Boolean mutableContent;
-    private Map<String, String> data = new HashMap<>();
+    private JsonNode data;
     private String url;
     private Map<String, String> iosAttachments = new HashMap<>();
     private String bigPicture;
@@ -91,6 +92,7 @@ public final class NotificationRequestBuilder {
     private Boolean wpwns;
     private Boolean adm;
     private Boolean chrome;
+    private List<String> externalUserIds;
 
     private NotificationRequestBuilder() {
     }
@@ -231,13 +233,8 @@ public final class NotificationRequestBuilder {
         return this;
     }
 
-    public NotificationRequestBuilder withData(Map<String, String> data) {
+    public NotificationRequestBuilder withData(JsonNode data) {
         this.data = data;
-        return this;
-    }
-
-    public NotificationRequestBuilder withDataElement(String key, String value) {
-        data.put(key, value);
         return this;
     }
 
@@ -505,6 +502,11 @@ public final class NotificationRequestBuilder {
         return this;
     }
 
+    public NotificationRequestBuilder withExternalUserIds(List<String> externalUserIds) {
+        this.externalUserIds = externalUserIds;
+        return this;
+    }
+
     public NotificationRequest build() {
         NotificationRequest notificationRequest = new NotificationRequest();
         notificationRequest.setId(id);
@@ -571,6 +573,7 @@ public final class NotificationRequestBuilder {
         notificationRequest.setWpwns(wpwns);
         notificationRequest.setAdm(adm);
         notificationRequest.setChrome(chrome);
+        notificationRequest.setExternalUserIds(externalUserIds);
         return notificationRequest;
     }
 }

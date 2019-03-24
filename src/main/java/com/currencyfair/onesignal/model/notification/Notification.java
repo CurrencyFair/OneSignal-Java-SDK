@@ -16,6 +16,7 @@
 package com.currencyfair.onesignal.model.notification;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
@@ -193,7 +194,7 @@ public class Notification {
      * <p>
      * Example: {@code {"abc": "123", "foo": "bar"}}
      */
-    private Map<String, String> data;
+    private JsonNode data;
 
     /**
      * The URL to open in the browser when a user clicks on the notification.
@@ -670,6 +671,10 @@ public class Notification {
     @JsonProperty("isAdm")
     private Boolean adm;
 
+
+    @JsonProperty("include_external_user_ids")
+    private List<String> externalUserIds;
+
     /**
      * THIS FLAG IS NOT USED FOR WEB PUSH Please see {@link #chromeWeb} for sending to web push users. This flag only
      * applies to Google Chrome Apps &amp; Extensions.
@@ -785,11 +790,11 @@ public class Notification {
         this.mutableContent = mutableContent;
     }
 
-    public Map<String, String> getData() {
+    public JsonNode getData() {
         return data;
     }
 
-    public void setData(Map<String, String> data) {
+    public void setData(JsonNode data) {
         this.data = data;
     }
 
@@ -1167,6 +1172,14 @@ public class Notification {
 
     public void setChrome(Boolean chrome) {
         this.chrome = chrome;
+    }
+
+    public List<String> getExternalUserIds() {
+        return externalUserIds;
+    }
+
+    public void setExternalUserIds(List<String> externalUserIds) {
+        this.externalUserIds = externalUserIds;
     }
 
     @Override
