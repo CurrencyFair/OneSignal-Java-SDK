@@ -35,6 +35,7 @@ public final class NotificationRequestBuilder {
     private List<String> excludedSegments = new ArrayList<>();
     private List<Filter> filters = new ArrayList<>();
     private List<String> includePlayerIds = new ArrayList<>();
+    private List<String> includeExternalUserIds = new ArrayList<>();
     private String appId;
     private List<String> appIds;
     private Map<String, String> contents = new HashMap<>();
@@ -166,6 +167,18 @@ public final class NotificationRequestBuilder {
     public NotificationRequestBuilder withIncludePlayerId(String includePlayerId) {
         if (StringUtils.isNotBlank(includePlayerId)) {
             includePlayerIds.add(includePlayerId);
+        }
+        return this;
+    }
+
+    public NotificationRequestBuilder withIncludeExternalUserIds(List<String> includeExternalUserIds) {
+        this.includeExternalUserIds = includeExternalUserIds;
+        return this;
+    }
+
+    public NotificationRequestBuilder withIncludeExternalUserId(String includeExternalUserId) {
+        if (StringUtils.isNotBlank(includeExternalUserId)) {
+            includeExternalUserIds.add(includeExternalUserId);
         }
         return this;
     }
@@ -515,6 +528,7 @@ public final class NotificationRequestBuilder {
         notificationRequest.setExcludedSegments(excludedSegments);
         notificationRequest.setFilters(filters);
         notificationRequest.setIncludePlayerIds(includePlayerIds);
+        notificationRequest.setIncludeExternalUserIds(includeExternalUserIds);
         notificationRequest.setAppId(appId);
         notificationRequest.setAppIds(appIds);
         notificationRequest.setContents(contents);

@@ -88,6 +88,18 @@ public class Notification {
     @JsonProperty("include_player_ids")
     private List<String> includePlayerIds;
 
+    /**
+     * RECOMMENDED - Target specific devices by custom user IDs assigned via API.
+     * <p>
+     * Do not combine with other targeting parameters. Not compatible with any other targeting parameters.
+     * <p>
+     * Example: {@code [“custom-id-assigned-by-api”]}
+     * <p>
+     * <i>Limit of 2,000 entries per REST API call</i>
+     */
+    @JsonProperty("include_external_user_ids")
+    private List<String> includeExternalUserIds;
+
 
 
     // COMMON PARAMETERS
@@ -719,6 +731,14 @@ public class Notification {
 
     public void setIncludePlayerIds(List<String> includePlayerIds) {
         this.includePlayerIds = includePlayerIds;
+    }
+
+    public List<String> getIncludeExternalUserIds() {
+        return includeExternalUserIds;
+    }
+
+    public void setIncludeExternalUserIds(List<String> externalUserIds) {
+        this.includeExternalUserIds = includeExternalUserIds;
     }
 
     public String getAppId() {
