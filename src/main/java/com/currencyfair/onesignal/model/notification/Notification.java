@@ -693,6 +693,14 @@ public class Notification {
     @JsonProperty("isChrome")
     private Boolean chrome;
 
+    /**
+     * Use this if you have client side Android Oreo Channels you have already defined in your app with code.
+     * <p>
+     * ANDROID
+     */
+    @JsonProperty("existing_android_channel_id")
+    private String existingAndroidChannelId;
+
     public String getId() {
         return id;
     }
@@ -1187,6 +1195,14 @@ public class Notification {
 
     public void setChrome(Boolean chrome) {
         this.chrome = chrome;
+    }
+
+    public void setExistingAndroidChannelId(String channelId) {
+        this.existingAndroidChannelId = channelId;
+    }
+
+    public String getExistingAndroidChannelId() {
+        return existingAndroidChannelId;
     }
 
     @Override

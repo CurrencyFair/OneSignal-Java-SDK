@@ -92,6 +92,7 @@ public final class NotificationRequestBuilder {
     private Boolean wpwns;
     private Boolean adm;
     private Boolean chrome;
+    private String existingAndroidChannelId;
 
     private NotificationRequestBuilder() {
     }
@@ -518,6 +519,11 @@ public final class NotificationRequestBuilder {
         return this;
     }
 
+    public NotificationRequestBuilder withExistingAndroidChannelId(String channelId) {
+        this.existingAndroidChannelId = channelId;
+        return this;
+    }
+
     public NotificationRequest build() {
         NotificationRequest notificationRequest = new NotificationRequest();
         notificationRequest.setId(id);
@@ -585,6 +591,7 @@ public final class NotificationRequestBuilder {
         notificationRequest.setWpwns(wpwns);
         notificationRequest.setAdm(adm);
         notificationRequest.setChrome(chrome);
+        notificationRequest.setExistingAndroidChannelId(existingAndroidChannelId);
         return notificationRequest;
     }
 }
