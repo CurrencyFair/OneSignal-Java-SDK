@@ -50,6 +50,13 @@ import java.util.List;
  */
 public final class OneSignal {
 
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+    static {
+        OBJECT_MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        OBJECT_MAPPER.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+        OBJECT_MAPPER.setSerializationInclusion(Include.NON_EMPTY);
+    }
+
     private OneSignal() {
     }
 
@@ -313,13 +320,9 @@ public final class OneSignal {
     }
 
     private static OneSignalComms oneSignal() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
-        objectMapper.setSerializationInclusion(Include.NON_EMPTY);
-        JacksonDecoder decoder = new JacksonDecoder(objectMapper);
+        JacksonDecoder decoder = new JacksonDecoder(OBJECT_MAPPER);
         return Feign.builder()
-                .encoder(new JacksonEncoder(objectMapper))
+                .encoder(new JacksonEncoder(OBJECT_MAPPER))
                 .decoder(decoder)
                 .decode404()
                 .errorDecoder(new OneSignalErrorDecoder(decoder))
