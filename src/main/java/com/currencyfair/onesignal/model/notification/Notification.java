@@ -738,7 +738,7 @@ public class Notification {
     }
 
     public void setIncludeExternalUserIds(List<String> externalUserIds) {
-        this.includeExternalUserIds = includeExternalUserIds;
+        this.includeExternalUserIds = externalUserIds;
     }
 
     public String getAppId() {
