@@ -19,7 +19,7 @@ deploy:
     on:
       repo: CurrencyFair/OneSignal-Java-SDK
       branch: master
-      jdk: oraclejdk8
+      jdk: openjdk8
   -
     provider: script
     script: .travis/deploy.sh
@@ -27,7 +27,7 @@ deploy:
     on:
       repo: CurrencyFair/OneSignal-Java-SDK
       tags: true
-      jdk: oraclejdk8
+      jdk: openjdk8
   -
     provider: script
     script: .travis/after_deploy.sh
@@ -35,7 +35,7 @@ deploy:
     on:
       repo: CurrencyFair/OneSignal-Java-SDK
       tags: true
-      jdk: oraclejdk8
+      jdk: openjdk8
 
 notifications:
   slack:
