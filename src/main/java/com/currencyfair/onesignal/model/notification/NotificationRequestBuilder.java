@@ -92,6 +92,10 @@ public final class NotificationRequestBuilder {
     private Boolean wpwns;
     private Boolean adm;
     private Boolean chrome;
+    private String emailSubject;
+    private String emailBody;
+    private String emailFromName;
+    private String emailFromAddress;
 
     private NotificationRequestBuilder() {
     }
@@ -518,6 +522,26 @@ public final class NotificationRequestBuilder {
         return this;
     }
 
+    public NotificationRequestBuilder withEmailSubject(String subject) {
+        this.emailSubject = subject;
+        return this;
+    }
+
+    public NotificationRequestBuilder withEmailBody(String body) {
+        this.emailBody = body;
+        return this;
+    }
+
+    public NotificationRequestBuilder withEmailFromName(String name) {
+        this.emailFromName = name;
+        return this;
+    }
+
+    public NotificationRequestBuilder withEmailFromAddress(String address) {
+        this.emailFromAddress = address;
+        return this;
+    }
+
     public NotificationRequest build() {
         NotificationRequest notificationRequest = new NotificationRequest();
         notificationRequest.setId(id);
@@ -585,6 +609,10 @@ public final class NotificationRequestBuilder {
         notificationRequest.setWpwns(wpwns);
         notificationRequest.setAdm(adm);
         notificationRequest.setChrome(chrome);
+        notificationRequest.setEmailSubject(emailSubject);
+        notificationRequest.setEmailBody(emailBody);
+        notificationRequest.setEmailFromName(emailFromName);
+        notificationRequest.setEmailFromAddress(emailFromAddress);
         return notificationRequest;
     }
 }

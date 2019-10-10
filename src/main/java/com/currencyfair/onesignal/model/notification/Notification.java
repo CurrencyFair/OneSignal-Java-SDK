@@ -251,6 +251,37 @@ public class Notification {
     @JsonProperty("chrome_big_picture")
     private String chromeBigPicture;
 
+    /**
+     * The subject of the email.
+     * <p> Required for email notifications.
+     */
+    @JsonProperty("email_subject")
+    private String emailSubject;
+
+    /**
+     * The body of the email. (HTML supported)
+     * <p> Required for email notifications.
+     */
+    @JsonProperty("email_body")
+    private String emailBody;
+
+    /**
+     * The name the email is from.
+     * <p>  If this is not specified, this will use your default from 
+     * name set in Email Setup.
+     */
+    @JsonProperty("email_from_name")
+    private String emailFromName;
+
+    /**
+     * Valid email address.
+     * <p> The email address the email is from. If this is not specified, this will use your 
+     * default from email in Email Setup.
+     */
+    @JsonProperty("email_from_address")
+    private String emailFromAddress;
+
+
 
 
     // ACTION BUTTONS
@@ -1187,6 +1218,22 @@ public class Notification {
 
     public void setChrome(Boolean chrome) {
         this.chrome = chrome;
+    }
+
+    public void setEmailSubject(String subject) {
+        this.emailSubject = subject;
+    }
+
+    public void setEmailBody(String body) {
+        this.emailBody = body;
+    }
+
+    public void setEmailFromName(String name) {
+        this.emailFromName = name;
+    }
+
+    public void setEmailFromAddress(String address) {
+        this.emailFromAddress = address;
     }
 
     @Override
