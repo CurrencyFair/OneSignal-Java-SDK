@@ -23,6 +23,6 @@ mvn clean deploy --settings .travis/mvnsettings.xml -DskipTests=true --batch-mod
 
 # cleanup gpg keys, just to be safe
 if [ ! -z "$TRAVIS" ]; then
-    shred -v ~/.gnupg/*
+    find ~/.gnupg/ -type f -exec shred -v {} \;
     rm -rf ~/.gnupg
 fi
