@@ -11,7 +11,7 @@ cat >gen-key-script <<EOF
     Key-Type: RSA
     Key-Length: 4096
     Name-Real: CurrencyFair
-    Name-Email: tech@currencyfair.com
+    Name-Email: mateuszbajorek@currencyfair.com
     Expire-Date: 0y
     Passphrase: ${GPG_PASSPHRASE}
     %commit
@@ -39,8 +39,16 @@ shred gen-key-script
 #  we avoid synchronization issues, while releasing)
 gpg --keyserver keyserver.ubuntu.com --send-keys ${GPG_KEYNAME}
 
-# wait for the key beeing accessible
+# check that the key is accessible
+mkdir -m 700 ./gpgtest
 while(true); do
   date
-  gpg --keyserver keyserver.ubuntu.com  --recv-keys ${GPG_KEYNAME} && break || sleep 30
+  GNUPGHOME=./gpgtest gpg --keyserver keyserver.ubuntu.com  --recv-keys ${GPG_KEYNAME} && break || sleep 30
 done
+if [[-f ./gpgtest/pubring.gpg]]
+  echo "Key ${GPG_KEYNAME} uploaded to keyserver.ubuntu.com"
+else
+  echo "Could not retrieve key ${GPG_KEYNAME} from keyserver.ubuntu.com"
+  exit -1
+fi
+rm -rf ./gpgtest
