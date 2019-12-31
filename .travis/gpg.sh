@@ -12,7 +12,7 @@ cat >gen-key-script <<EOF
     Key-Length: 4096
     Name-Real: CurrencyFair
     Name-Email: engineeringleads@currencyfair.com
-    Expire-Date: 0y
+    Expire-Date: 1d
     Passphrase: ${GPG_PASSPHRASE}
     %commit
     %echo done
@@ -29,7 +29,8 @@ gpg --batch --gen-key gen-key-script
 # uid                  Lars K.W. Gohlke <lars.gohlke@idealo.de>
 # ssb   4096R/CC1613B2 2016-09-08
 # ssb   4096R/55B7CAA2 2016-09-08
-export GPG_KEYNAME=$(gpg -K | grep ^\\s | head -n1)
+gpg -K
+export GPG_KEYNAME=$(gpg -K | grep ^sec | cut -d/  -f2 | cut -d\  -f1 | head -n1)
 
 # cleanup local configuration
 shred gen-key-script
@@ -37,10 +38,12 @@ shred gen-key-script
 # publish the gpg key
 # (use keyserver.ubuntu.com as travis request keys from this server,
 #  we avoid synchronization issues, while releasing)
+echo "Uploading key ${GPG_KEYNAME} to keyserver.ubuntu.com"
 gpg --keyserver keyserver.ubuntu.com --send-keys ${GPG_KEYNAME}
 
 # check that the key is accessible
 mkdir -m 700 ./gpgtest
+echo "Checking key ${GPG_KEYNAME} is on keyserver.ubuntu.com"
 while(true); do
   date
   GNUPGHOME=./gpgtest gpg --keyserver keyserver.ubuntu.com  --recv-keys ${GPG_KEYNAME} && break || sleep 30
