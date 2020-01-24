@@ -724,6 +724,9 @@ public class Notification {
     @JsonProperty("isChrome")
     private Boolean chrome;
 
+    @JsonProperty("external_id")
+    private String externalId;
+
     public String getId() {
         return id;
     }
@@ -1215,6 +1218,12 @@ public class Notification {
     public Boolean getChrome() {
         return chrome;
     }
+
+    public void setExternalId(String string) {
+        this.externalId = string;
+    }
+
+    public String getExternalId() { return this.externalId; }
 
     public void setChrome(Boolean chrome) {
         this.chrome = chrome;
