@@ -724,6 +724,14 @@ public class Notification {
     @JsonProperty("isChrome")
     private Boolean chrome;
 
+    /**
+     * A request received with this parameter will first look for another notification with the same external_id.
+     * If one exists, a notification will not be sent, and result of the previous operation will instead be returned.
+     * Therefore, if you plan on using this feature, it's important to use a good source of randomness to generate the UUID passed here.
+     */
+    @JsonProperty("external_id")
+    private String externalId;
+
     public String getId() {
         return id;
     }
@@ -1214,6 +1222,14 @@ public class Notification {
 
     public Boolean getChrome() {
         return chrome;
+    }
+
+    public void setExternalId(String string) {
+        this.externalId = string;
+    }
+
+    public String getExternalId() {
+        return this.externalId;
     }
 
     public void setChrome(Boolean chrome) {
