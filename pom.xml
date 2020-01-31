@@ -72,7 +72,7 @@
 
         <!--CHECKSTYLE-->
         <checkstyle.configuration>config/cf_checkstyle.xml</checkstyle.configuration>
-        <checkstyle.version>6.19</checkstyle.version>
+        <checkstyle.version>8.29</checkstyle.version>
 
         <!--PLUGINS-->
         <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
