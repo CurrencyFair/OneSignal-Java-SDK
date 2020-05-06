@@ -15,6 +15,7 @@
  */
 package com.currencyfair.onesignal.model.notification;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -59,12 +60,16 @@ public class Filter {
     /**
      * for location filter
      */
+    @JsonProperty("lat")
     private String latitude;
     /**
      * for location filter
      */
+    @JsonProperty("long")
     private String longitude;
 
+    @JsonProperty("hours_ago")
+    private int hoursAgo;
     /**
      * Operator. Defaults to {@link Operator#AND}.
      */
@@ -75,6 +80,19 @@ public class Filter {
         this.key = key;
         this.relation = relation;
         this.value = value;
+    }
+
+    public Filter(Field field, String radius, String latitude, String longitude) {
+        this.field = field;
+        this.radius = radius;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public Filter(Field field, Relation relation, int hoursAgo) {
+        this.field = field;
+        this.relation = relation;
+        this.hoursAgo = hoursAgo;
     }
 
     public Filter(Operator operator) {
@@ -147,6 +165,16 @@ public class Filter {
     public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
+
+    public int getHoursAgo() {
+        return hoursAgo;
+    }
+
+    public void setHoursAgo(int hoursAgo) {
+        this.hoursAgo = hoursAgo;
+    }
+
+
 
     @Override
     public String toString() {
