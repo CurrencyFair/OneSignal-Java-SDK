@@ -22,12 +22,24 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  * Response class for {@link com.currencyfair.onesignal.OneSignal#viewDevice(String, String, String)} request.
  */
 public class ViewDeviceResponse extends Device {
+    /**
+     * The device's OneSignal ID
+     */
+    private String id;
 
     /**
      * If {@code true}, this is the equivalent of a user being <i>Unsubscribed</i> (as seen in All Users).
      */
     @JsonProperty("invalid_identifier")
     private Boolean invalidIdentifier;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public Boolean getInvalidIdentifier() {
         return invalidIdentifier;
