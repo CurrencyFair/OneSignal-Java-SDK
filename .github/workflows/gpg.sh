@@ -29,15 +29,15 @@ gpg --batch --gen-key gen-key-script
 # uid                  Lars K.W. Gohlke <lars.gohlke@idealo.de>
 # ssb   4096R/CC1613B2 2016-09-08
 # ssb   4096R/55B7CAA2 2016-09-08
-gpg -K
-export GPG_KEYNAME=$(gpg -K | grep ^sec | cut -d/  -f2 | cut -d\  -f1 | head -n1)
+gpg -K --keyid-format=short
+export GPG_KEYNAME=$(gpg -K --keyid-format=short | grep ^sec | cut -d/  -f2 | cut -d\  -f1 | head -n1)
 
 # cleanup local configuration
 shred gen-key-script
 
 # publish the gpg key
-# (use keyserver.ubuntu.com as travis request keys from this server,
-#  we avoid synchronization issues, while releasing)
+# (use a single public key server e.g.keyserver.ubuntu.com
+# to avoid synchronization issues, while releasing)
 echo "Uploading key ${GPG_KEYNAME} to keyserver.ubuntu.com"
 gpg --keyserver keyserver.ubuntu.com --send-keys ${GPG_KEYNAME}
 
