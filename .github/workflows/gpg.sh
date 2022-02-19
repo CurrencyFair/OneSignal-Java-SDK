@@ -29,8 +29,8 @@ gpg --batch --gen-key gen-key-script
 # uid                  Lars K.W. Gohlke <lars.gohlke@idealo.de>
 # ssb   4096R/CC1613B2 2016-09-08
 # ssb   4096R/55B7CAA2 2016-09-08
-gpg -K --keyid-format=short
-export GPG_KEYNAME=$(gpg -K --keyid-format=short | grep ^sec | cut -d/  -f2 | cut -d\  -f1 | head -n1)
+gpg -K --keyid-format=0xshort
+export GPG_KEYNAME=$(gpg -K --keyid-format=0xshort | grep ^sec | cut -d/  -f2 | cut -d\  -f1 | head -n1)
 
 # cleanup local configuration
 shred gen-key-script
@@ -48,5 +48,9 @@ while(true); do
   date
   GNUPGHOME=./gpgtest gpg --keyserver keyserver.ubuntu.com  --recv-keys ${GPG_KEYNAME} && break || sleep 30
 done
+
+echo "Waiting for 2 minutes to let the key being synced"
+sleep 120
+
 echo "Key ${GPG_KEYNAME} uploaded to keyserver.ubuntu.com"
 rm -rf ./gpgtest
