@@ -31,12 +31,6 @@ public class ViewNotificationResponse extends Notification {
     private Long successful;
 
     /**
-     * Number of notifications that have not been sent out yet. This can mean either our system is still processing the
-     * notification or you have delayed options set.
-     */
-    private Long remaining;
-
-    /**
      * Number of notifications that could not be delivered due to an error. You can find more information by viewing
      * the notification in the dashboard.
      */
@@ -76,14 +70,6 @@ public class ViewNotificationResponse extends Notification {
 
     public void setSuccessful(Long successful) {
         this.successful = successful;
-    }
-
-    public Long getRemaining() {
-        return remaining;
-    }
-
-    public void setRemaining(Long remaining) {
-        this.remaining = remaining;
     }
 
     public Long getFailed() {
