@@ -12,7 +12,7 @@ fi
 
 # cleanup and generate gpg keys
 if [ -d "$HOME/.gnupg" ]; then
-    shred -v ~/.gnupg/*
+    find ~/.gnupg/ -type f -exec shred -v {} \;
     rm -rf ~/.gnupg
 fi
 

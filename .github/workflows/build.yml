@@ -1,7 +1,7 @@
 name: build
 on:
   push:
-    branches: [ master ]
+    branches: [ master, fix-ci-workflow ]
     tags: [ "*.*.*" ]
 jobs:
   build:
