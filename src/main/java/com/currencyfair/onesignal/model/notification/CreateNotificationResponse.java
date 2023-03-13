@@ -28,11 +28,6 @@ public class CreateNotificationResponse {
     private String id;
 
     /**
-     * Number of recipients that receive the notification.
-     */
-    private Integer recipients;
-
-    /**
      * Not strictly defined so treating it dynamically... No smart mapping to a class can be done since errors content
      * can be an array of strings (as error messages) or a JSON object (as "invalid_player_ids").
      */
@@ -44,14 +39,6 @@ public class CreateNotificationResponse {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public Integer getRecipients() {
-        return recipients;
-    }
-
-    public void setRecipients(Integer recipients) {
-        this.recipients = recipients;
     }
 
     public Object getErrors() {
