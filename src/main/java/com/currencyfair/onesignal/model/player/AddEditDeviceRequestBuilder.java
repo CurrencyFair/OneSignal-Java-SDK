@@ -44,6 +44,7 @@ public final class AddEditDeviceRequestBuilder {
     private Long lastActive;
     private TestType testType;
     private Long playtime;
+    private String externalUserId;
 
     private AddEditDeviceRequestBuilder() {
     }
@@ -162,6 +163,11 @@ public final class AddEditDeviceRequestBuilder {
         return this;
     }
 
+    public AddEditDeviceRequestBuilder withExternalUserId(String externalUserId) {
+        this.externalUserId = externalUserId;
+        return this;
+    }
+
     public AddEditDeviceRequest build() {
         AddEditDeviceRequest addEditDeviceRequest = new AddEditDeviceRequest();
         addEditDeviceRequest.setDeviceType(deviceType);
@@ -185,6 +191,7 @@ public final class AddEditDeviceRequestBuilder {
         addEditDeviceRequest.setLastActive(lastActive);
         addEditDeviceRequest.setTestType(testType);
         addEditDeviceRequest.setPlaytime(playtime);
+        addEditDeviceRequest.setExternalUserId(externalUserId);
         return addEditDeviceRequest;
     }
 }

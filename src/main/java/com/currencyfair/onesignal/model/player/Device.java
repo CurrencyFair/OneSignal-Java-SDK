@@ -78,6 +78,9 @@ public class Device extends Session {
      */
     private Long playtime;
 
+    @JsonProperty("external_user_id")
+    private String externalUserId;
+
     public DeviceType getDeviceType() {
         return deviceType;
     }
@@ -148,6 +151,14 @@ public class Device extends Session {
 
     public void setPlaytime(Long playtime) {
         this.playtime = playtime;
+    }
+
+    public String getExternalUserId() {
+        return externalUserId;
+    }
+
+    public void setExternalUserId(String externalUserId) {
+        this.externalUserId = externalUserId;
     }
 
     @Override
